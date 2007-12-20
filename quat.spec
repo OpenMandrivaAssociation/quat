@@ -40,9 +40,15 @@ perl -pi -e 's,\`\$FLTK --exec-prefix\`,%{_prefix},' configure
 
 rm $RPM_BUILD_ROOT/%_datadir/%name.iss
 
-mkdir -p $RPM_BUILD_ROOT%{_menudir}
-cat > $RPM_BUILD_ROOT%{_menudir}/%{name} <<EOF
-?package(%{name}): command="quat" title="Quat" longtitle="Generate 3D fractal objects" needs="x11" icon="other_sciences.png" section="More Applications/Sciences/Other"
+mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications/
+cat << EOF > %buildroot%{_datadir}/applications/mandriva-%{name}.desktop
+[Desktop Entry]
+Type=Application
+Exec=quat
+Name=Quat
+Comment=Generate 3D fractal objects
+Icon=other_sciences
+Categories=Science;
 EOF
 
 %clean
@@ -59,5 +65,5 @@ rm -fr $RPM_BUILD_ROOT
 %doc COPYING INSTALL 
 %_bindir/*
 %_datadir/%name
-%_menudir/*
+%{_datadir}/applications/mandriva-*.desktop
 
