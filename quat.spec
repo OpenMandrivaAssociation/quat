@@ -11,6 +11,7 @@ Url:		http://www.physcip.uni-stuttgart.de/phy11733/quat_e.html
 Group: 		Graphics
 License:	GPL
 BuildRequires:	libfltk-devel
+BuildRoot:	%{_tmppath}/%{name}-buildroot
 
 %description
 Quat is a program for generation of 3d fractal objects. 
