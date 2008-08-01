@@ -1,6 +1,6 @@
 %define name quat
 %define version 1.20
-%define release %mkrel 7
+%define release %mkrel 8
 
 Summary:	Generation of 3d fractal objects
 Name:		%name
