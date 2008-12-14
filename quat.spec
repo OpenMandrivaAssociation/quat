@@ -11,7 +11,7 @@ Patch0:		quat-1.20-new-fltk.patch
 Url:		http://www.physcip.uni-stuttgart.de/phy11733/quat_e.html
 Group: 		Graphics
 License:	GPLv2+
-BuildRequires:	libfltk-devel
+BuildRequires:	fltk-devel
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 
 %description
