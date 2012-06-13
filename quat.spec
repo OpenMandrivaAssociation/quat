@@ -1,18 +1,13 @@
-%define name quat
-%define version 1.20
-%define release %mkrel 13
-
 Summary:	Generation of 3d fractal objects
-Name:		%name
-Version:	%version
-Release:	%release
-Source0:	%{name}-%{version}.tar.bz2
-Patch0:		quat-1.20-new-fltk.patch
-Url:		http://www.physcip.uni-stuttgart.de/phy11733/quat_e.html
+Name:		quat
+Version:	1.20
+Release:	14
 Group: 		Graphics
 License:	GPLv2+
+Url:		http://www.physcip.uni-stuttgart.de/phy11733/quat_e.html
+Source0:	%{name}-%{version}.tar.bz2
+Patch0:		quat-1.20-new-fltk.patch
 BuildRequires:	fltk-devel
-BuildRoot:	%{_tmppath}/%{name}-buildroot
 
 %description
 Quat is a program for generation of 3d fractal objects. 
@@ -34,13 +29,12 @@ perl -pi -e 's,\`\$FLTK --exec-prefix\`,%{_prefix},' configure
 %make
 
 %install
-rm -fr %buildroot
 %makeinstall_std
 
-rm $RPM_BUILD_ROOT/%_datadir/%name.iss
+rm -f %{buildroot}/%{_datadir}/%{name}.iss
 
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications/
-cat << EOF > %buildroot%{_datadir}/applications/mandriva-%{name}.desktop
+mkdir -p %{buildroot}%{_datadir}/applications/
+cat << EOF > %{buildroot}%{_datadir}/applications/%{name}.desktop
 [Desktop Entry]
 Type=Application
 Exec=quat
@@ -50,23 +44,9 @@ Icon=other_sciences
 Categories=Science;
 EOF
 
-%clean
-rm -fr $RPM_BUILD_ROOT
-
-%if %mdkversion < 200900
-%post
-%update_menus
-%endif
-
-%if %mdkversion < 200900
-%postun
-%update_menus
-%endif
-
 %files
-%defattr(-,root,root)
-%doc COPYING INSTALL 
-%_bindir/*
-%_datadir/%name
-%{_datadir}/applications/mandriva-*.desktop
+%doc COPYING
+%{_bindir}/*
+%{_datadir}/%{name}
+%{_datadir}/applications/%{name}.desktop
 
