@@ -4,7 +4,7 @@ Version:	1.20
 Release:	14
 Group: 		Graphics
 License:	GPLv2+
-Url:		http://www.physcip.uni-stuttgart.de/phy11733/quat_e.html
+Url:		https://www.physcip.uni-stuttgart.de/phy11733/quat_e.html
 Source0:	%{name}-%{version}.tar.bz2
 Patch0:		quat-1.20-new-fltk.patch
 BuildRequires:	fltk-devel
